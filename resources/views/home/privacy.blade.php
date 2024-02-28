@@ -1,22 +1,18 @@
 @extends('home.base')
 @section('content')
-    <!--Page Header Start-->
-    <section class="page-header">
-        <div class="page-header-bg" style="background-image: url({{asset('home/images/backgrounds/main-slider-2-1.jpg')}})">
-        </div>
-        <div class="page-header-bg-2" style="background-image: url({{asset('home/images/backgrounds/main-slider-2-1.jpg')}})">
-        </div>
+    <!-- Start Page-title Area -->
+    <div class="page-title-area bg-black">
         <div class="container">
-            <div class="page-header__inner">
+            <div class="page-title-content">
                 <h2>{{$pageName}}</h2>
-                <ul class="thm-breadcrumb list-unstyled">
+                <ul>
                     <li><a href="{{url('/')}}">Home</a></li>
-                    <li><a href="#">{{$pageName}}</a></li>
+                    <li>{{$pageName}}</li>
                 </ul>
             </div>
         </div>
-    </section>
-    <!--Page Header End-->
+    </div>
+    <!-- End Page-title Area -->
 
 
     <!--About One Start-->

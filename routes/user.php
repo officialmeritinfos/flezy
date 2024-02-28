@@ -50,6 +50,8 @@ Route::get('settings',[Settings::class,'landingPage'])->name('setting.index');
 Route::post('update-settings',[Settings::class,'processSetting'])->name('settings.update');
 Route::post('update-password',[Settings::class,'processPassword'])->name('password.update');
 Route::post('update-photo',[Settings::class,'processPhoto'])->name('photo.update');
+Route::get('kyc',[Settings::class,'kyc'])->name('setting.kyc');
+Route::post('update-kyc',[Settings::class,'submitKyc'])->name('kyc.update');
 /*================ REFERRAL ROUTE ====================*/
 Route::get('referral',[Referrals::class,'landingPage'])->name('referral.index');
 /*================ CHART ROUTE ====================*/

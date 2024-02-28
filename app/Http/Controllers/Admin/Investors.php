@@ -377,12 +377,21 @@ class Investors extends Controller
         $investor = User::where('id',$input['id'])->first();
 
         $data = [
-            'loan'=>$investor->loan+$input['amount']
+            'bonus'=>$investor->bonus+$input['amount']
         ];
 
         $update = User::where('id',$input['id'])->update($data);
+        if ($update){
+            //send mail to investor
+            $userMessage = "
+                You have been credited with $<b>" . $input['amount'] . "</b> as bonus
+            ";
+            //SendInvestmentNotification::dispatch($investor, $userMessage, 'Withdrawal Approved');
+            $investor->notify(new InvestmentMail($investor, $userMessage, 'Credit Notification - Bonus'));
 
-        return back()->with('success','Debt added');
+        }
+
+        return back()->with('success','Bonus added');
     }
 
     public function subLoan(Request $request)
@@ -402,34 +411,44 @@ class Investors extends Controller
         $investor = User::where('id',$input['id'])->first();
 
         $data = [
-            'loan'=>$investor->loan-$input['amount']
+            'bonus'=>$investor->bonus-$input['amount']
         ];
 
         $update = User::where('id',$input['id'])->update($data);
-        if ($update){
-            //send mail to investor
-            $userMessage = "
-                $<b>" . $input['amount'] . "</b> has been cleared off your loan. Contact support for more
-                information.
-            ";
-            //SendInvestmentNotification::dispatch($investor, $userMessage, 'Loan Debit');
-            $investor->notify(new InvestmentMail($investor, $userMessage, 'Loan Debit'));
-        }
-        return back()->with('success','Debt subtracted');
+
+        return back()->with('success','Bonus subtracted');
     }
-    
+
      public function loginUser($id)
     {
         $web = GeneralSetting::where('id',1)->first();
         $user = Auth::user();
-        
+
         $investor = User::where('id',$id)->first();
-        
+
         Auth::logout();
-        
+
         Auth::login($investor);
-        
-        return redirect(route('user.dashboard')) ->with('success','Login Successful'); 
-        
+
+        return redirect(route('user.dashboard')) ->with('success','Login Successful');
+
+    }
+    public function verifyKYC($id)
+    {
+        $data =[
+            'isVerified'=>1
+        ];
+        User::where('id',$id)->update($data);
+
+        return back()->with('success','Successful');
+    }
+    public function unverifyKYC($id)
+    {
+        $data =[
+            'isVerified'=>3
+        ];
+        User::where('id',$id)->update($data);
+
+        return back()->with('success','Successful');
     }
 }

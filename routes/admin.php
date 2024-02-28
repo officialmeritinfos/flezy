@@ -83,6 +83,12 @@ Route::get('investors/{id}/activate-user',[Investors::class,'activateUser'])
     ->name('investor.activate.user');
 Route::get('investors/{id}/deactivate-user',[Investors::class,'deactivateUser'])
     ->name('investor.deactivate.user');
+
+Route::get('investors/{id}/verify-user',[Investors::class,'verifyKYC'])
+    ->name('investor.verify.user');
+Route::get('investors/{id}/unverify-user',[Investors::class,'unverifyKYC'])
+    ->name('investor.unverify.user');
+
 Route::post('investors/addFund',[Investors::class,'addFund'])
     ->name('investor.addFund');
 Route::post('investors/subFund',[Investors::class,'subFund'])

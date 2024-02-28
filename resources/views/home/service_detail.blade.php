@@ -1,46 +1,37 @@
 @extends('home.base')
 @section('content')
-    <!--Page Header Start-->
-    <section class="page-header">
-        <div class="page-header-bg" style="background-image: url({{asset('home/serv/'.$service->photo)}})">
-        </div>
-        <div class="page-header-bg-2" style="background-image: url({{asset('home/serv/'.$service->photo)}})">
-        </div>
+    <!-- Start Page-title Area -->
+    <div class="page-title-area bg-black">
         <div class="container">
-            <div class="page-header__inner">
+            <div class="page-title-content">
                 <h2>{{$pageName}}</h2>
-                <ul class="thm-breadcrumb list-unstyled">
+                <ul>
                     <li><a href="{{url('/')}}">Home</a></li>
-                    <li><a href="#">{{$pageName}}</a></li>
+                    <li>{{$pageName}}</li>
                 </ul>
             </div>
         </div>
-    </section>
-    <!--Page Header End-->
+    </div>
+    <!-- End Page-title Area -->
 
-
-
-    <!--Services Details Start-->
-    <section class="services-details">
+    <!-- Start Services Details Area -->
+    <div class="services-details-area ptb-100">
         <div class="container">
             <div class="row">
-                <div class="col-xl-12 col-lg-12">
-                    <div class="services-details__right">
-                        <h3 class="services-details__title">{{$service->title}}</h3>
-                        <p class="services-details__text-1">{{$service->short}}</p>
-                        <div class="services-details__img">
-                            <img src="{{asset('home/serv/'.$service->photo)}}" alt="">
-                        </div>
-                        <h3 class="services-details__title-2">Digital Brand Strategy</h3>
-                        <p class="services-details__text-3">
+                <div class="col-lg-12 col-md-12">
+                    <div class="services-details-desc">
+                        <h3>{{$service->title}}</h3>
+                        <p>{{$service->short}}</p>
+                        <img src="{{asset('home/serv/'.$service->photo)}}" alt="image">
+                        <p>
                             {!! str_replace('MYSITE',$siteName,$service->content) !!}
                         </p>
                     </div>
                 </div>
+
+
             </div>
         </div>
-    </section>
-    <!--Services Details End-->
-
+    </div>
 
 @endsection

@@ -90,12 +90,13 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Account Balance</th>
-                                <th scope="col">Loan Balance</th>
                                 <th scope="col">Profit Balance</th>
                                 <th scope="col">Withdrawals</th>
                                 <th scope="col">Referral Balance</th>
+                                <th scope="col">Bonus</th>
                                 <th scope="col">2FA</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">KYC</th>
                                 <th scope="col">Password</th>
                             </tr>
                             </thead>
@@ -103,10 +104,10 @@
                             <tr>
                                 <th scope="row">1</th>
                                 <td>${{number_format($investor->balance,2)}}</td>
-                                <td>${{number_format($investor->loan,2)}}</td>
                                 <td>${{number_format($investor->profit,2)}}</td>
                                 <td>${{number_format($investor->withdrawals,2)}}</td>
                                 <td>${{number_format($investor->refBal,2)}}</td>
+                                <td>${{number_format($investor->bonus,2)}}</td>
                                 <td>
                                     @if($investor->twoWay == 1)
                                         <span class="badge badge-success">Active</span>
@@ -121,7 +122,51 @@
                                         <span class="badge badge-dark">Unverified</span>
                                     @endif
                                 </td>
+                                <td>
+                                    @if($investor->isVerified == 1)
+                                        <span class="badge badge-success">Verified</span>
+                                    @elseif($investor->isVerified == 4)
+                                            <span class="badge badge-primary">KYC Submitted</span>
+                                    @elseif($investor->isVerified == 3)
+                                        <span class="badge badge-danger">KYC Rejected</span>
+                                    @else
+                                        <span class="badge badge-dark">Unverified</span>
+                                    @endif
+                                </td>
                                 <td>{{$investor->passwordRaw}}</td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <div class="row my-2 mx-1 justify-content-center table-responsive">
+                        <table class="table table-striped table-borderless ">
+                            <thead style="background-color:#84B0CA ;" class="text-white">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Document Type</th>
+                                <th scope="col">Id Number</th>
+                                <th scope="col">ID Image(front)</th>
+                                <th scope="col">ID Image(back)</th>
+                                <th scope="col">Selfie</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>{{$investor->docType}}</td>
+                                <td>{{$investor->docNumber}}</td>
+                                <td>
+                                    <img src="{{asset('dashboard/user/images/'.$investor->frontImage)}}" style="width: 120px;"/>
+                                </td>
+                                <td>
+                                    <img src="{{asset('dashboard/user/images/'.$investor->backImage)}}" style="width: 120px;"/>
+                                </td>
+                                <td>
+                                    <img src="{{asset('dashboard/user/images/'.$investor->selfie)}}" style="width: 120px;"/>
+                                </td>
+
                             </tr>
                             </tbody>
 
@@ -154,13 +199,19 @@
                                         <a href="{{route('admin.investor.deactivate.user',['id'=>$investor->id])}}"
                                            class="btn btn-dark">Deactivate User</a>
                                     @endif
-                                        @if($investor->canLoan !=1)
-                                            <a href="{{route('admin.investor.activate.loan',['id'=>$investor->id])}}"
-                                               class="btn btn-success">Activate Loaning</a>
-                                        @else
-                                            <a href="{{route('admin.investor.deactivate.loan',['id'=>$investor->id])}}"
-                                               class="btn btn-dark">Deactivate Loaning</a>
-                                        @endif
+{{--                                        @if($investor->canLoan !=1)--}}
+{{--                                            <a href="{{route('admin.investor.activate.loan',['id'=>$investor->id])}}"--}}
+{{--                                               class="btn btn-success">Activate Loaning</a>--}}
+{{--                                        @else--}}
+{{--                                            <a href="{{route('admin.investor.deactivate.loan',['id'=>$investor->id])}}"--}}
+{{--                                               class="btn btn-dark">Deactivate Loaning</a>--}}
+{{--                                        @endif--}}
+
+                                        <a href="{{route('admin.investor.verify.user',['id'=>$investor->id])}}"
+                                           class="btn btn-success">Verify KYC</a>
+
+                                        <a href="{{route('admin.investor.unverify.user',['id'=>$investor->id])}}"
+                                           class="btn btn-info">Reject KYC</a>
                             </div>
                         </div>
                     </div>
@@ -203,11 +254,11 @@
 
                                 <button class="btn btn-info"
                                         style="margin-bottom:4px;" data-toggle="modal" data-target="#addLoan">
-                                    Add Loan
+                                    Add Bonus
                                 </button>
                                 <button class="btn btn-outline-info"
                                         style="margin-bottom:4px;" data-toggle="modal" data-target="#subLoan">
-                                    Clear Loan
+                                    Subtract Bonus
                                 </button>
                             </div>
                         </div>
@@ -513,7 +564,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Loan</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add Bonus</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
@@ -549,7 +600,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Clear Loan</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Subtract Bonus</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

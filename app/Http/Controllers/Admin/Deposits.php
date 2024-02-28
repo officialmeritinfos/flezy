@@ -54,7 +54,11 @@ class Deposits extends Controller
         $web = GeneralSetting::find(1);
         Auth::user();
 
-        $deposit = Deposit::where('id',$id)->first();
+        $deposit = Deposit::where('id',$id)->firstOrFail();
+
+        if ($deposit->status==1){
+            return back()->with('error','Deposit already approved');
+        }
 
         $investor = User::where('id',$deposit->user)->first();
 

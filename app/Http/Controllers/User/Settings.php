@@ -125,4 +125,84 @@ class Settings extends Controller
 
         return back()->with('success','Image successfully updated');
     }
+    //kyc
+    public function kyc()
+    {
+        $web = GeneralSetting::find(1);
+        $user = Auth::user();
+
+        $dataView = [
+            'web'=>$web,
+            'user'=>$user,
+            'pageName'=>'Account KYC',
+            'siteName'=>$web->name
+        ];
+
+        return view('user.kyc',$dataView);
+    }
+    //submit kyc
+    public function submitKyc(Request  $request)
+    {
+        $user = Auth::user();
+
+        $web = GeneralSetting::where('id',1)->first();
+
+        $validated = Validator::make($request->all(),[
+            'selfie'=>['required','image'],
+            'dob'=>['required','date'],
+            'country'=>['required','string'],
+            'idType'=>['required','string'],
+            'idNumber'=>['required','string'],
+            'frontImage'=>['required','image'],
+            'backImage'=>['nullable','image'],
+        ]);
+
+        if ($validated->fails()){
+            return back()->with('errors',$validated->errors());
+        }
+
+        $input = $validated->validated();
+
+        //check if selfie is uploaded
+        if ($request->hasFile('selfie')) {
+            //lets upload the first image
+            $selfie = time() . '_' . $request->file('selfie')->hashName();
+            $request->selfie->move(public_path('dashboard/user/images/'), $selfie);
+
+        }else{
+            return back()->with('error','Selfie Image is compulsory.');
+        }
+
+        //check if frontImage is uploaded
+        if ($request->hasFile('frontImage')) {
+            //lets upload the first image
+            $frontImage = time() . '_' . $request->file('frontImage')->hashName();
+            $request->frontImage->move(public_path('dashboard/user/images/'), $frontImage);
+
+        }else{
+            return back()->with('error','Front Image is compulsory.');
+        }
+
+        //check if backImage is uploaded
+        if ($request->hasFile('backImage')) {
+            //lets upload the first image
+            $backImage = time() . '_' . $request->file('backImage')->hashName();
+            $request->backImage->move(public_path('dashboard/user/images/'), $backImage);
+
+        }else{
+            $backImage='';
+        }
+
+        $user->country=$input['country'];
+        $user->dateOfBirth=$input['dob'];
+        $user->docNumber=$input['idNumber'];
+        $user->docType=$input['idType'];
+        $user->selfie=$selfie;
+        $user->frontImage=$frontImage;
+        $user->backImage=$backImage;
+        $user->isVerified=4;
+        $user->save();
+
+        return back()->with('success','KYC successfully updated');
+    }
 }

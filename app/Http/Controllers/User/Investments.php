@@ -105,7 +105,7 @@ class Investments extends Controller
                 $newBalance = [
                     'balance'=>$balance- $input['amount']
                 ];
-                $status=2;
+                $status=4;
                 break;
             default:
                 $balance = $user->profit;
@@ -133,10 +133,7 @@ class Investments extends Controller
         $profitPerReturn = $input['amount']*($roi/100);
         $nextReturn = strtotime($returnType->duration,time());
         $ref =$this->generateId('investments','reference',15);
-        //check if amount is more than minimum deposit
-        if ($web->minDeposit > $input['amount'] && $input['account']==1){
-            return back()->with('error','Amount to Deposit is less than minimum Deposit of $'.$web->minDeposit);
-        }
+
         $dataInvestment = [
             'user'=>$user->id,'amount'=>$input['amount'],'roi'=>$roi,'reference'=>$ref,
             'source'=>strtolower($source),'profitPerReturn'=>$profitPerReturn,'currentProfit'=>0,
@@ -152,24 +149,14 @@ class Investments extends Controller
             //send notification
             //check if admin exists
             $admin = User::where('is_admin',1)->first();
-            if ($input['account']!=1){
-                $userMessage = "
-                    Your new deposit of $<b>".$input['amount']." </b>
-                    has been received, and started. Your Investment reference Id is <b>".$ref."</b>
+            $userMessage = "
+                    Your new investment package purchase of $<b>".$input['amount']." </b>
+                    has been received, and activated. Your Investment reference Id is <b>".$ref."</b>
                 ";
-            }else{
-                $userMessage = "
-                    Your new deposit of $<b>".$input['amount']." </b>
-                    has been received; please proceed to making your payment to the address below:
-                    <br>".$coinExists->address.".<p>Once payment has been made, contact support for
-                    verification and approval.</p>
-                    <br>
-                    Your Investment reference Id is <b>".$ref."</b>
-                ";
-            }
+
             //send mail to user
             //SendInvestmentNotification::dispatch($user,$userMessage,'Investment Initiation');
-            $user->notify(new InvestmentMail($user,$userMessage,'Deposit Initiation'));
+            $user->notify(new InvestmentMail($user,$userMessage,'Investment Initiation'));
             //send mail to Admin
             if (!empty($admin)){
                 $adminMessage = "

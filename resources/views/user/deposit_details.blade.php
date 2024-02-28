@@ -10,19 +10,12 @@
                     <div class="col-xl-9">
                         <p style="color: #7e8d9f;font-size: 20px;">Invoice <strong>ID: #{{$deposit->reference}}</strong></p>
                     </div>
-                    <div class="col-xl-3 float-end">
-                        <a class="btn btn-light text-capitalize border-0" data-mdb-ripple-color="dark"
-                        onclick="window.print()"><i
-                                class="fas fa-print text-primary"></i> Print</a>
-                    </div>
                     <hr>
                 </div>
 
                 <div class="container">
                     <div class="col-md-12">
                         <div class="text-center">
-                            <i style="color:#5d9fc5 ;">{{$siteName}}</i>
-{{--                            <p class="pt-0">{{$siteName}}</p>--}}
                         </div>
 
                     </div>
@@ -64,7 +57,7 @@
                         </div>
                     </div>
 
-                    <div class="row my-2 mx-1 justify-content-center table-responsive">
+                    <div class="row justify-content-center table-responsive">
                         <table class="table table-striped table-borderless ">
                             <thead style="background-color:#84B0CA ;" class="text-white">
                             <tr>
@@ -100,7 +93,7 @@
                                 </p>
                             @else
                                 <p>
-                                    You are to send <b>{{number_format($deposit->amount,2)}} of {{$deposit->asset}}</b>
+                                    You are to send <b>${{number_format($deposit->amount,2)}} of {{$deposit->asset}}</b>
                                     to the address <b style="font-size:20px;" id="address">{{$deposit->details}}</b>.<br>
                                     After making payment, contact support for instant crediting.
                                 </p>
@@ -109,13 +102,13 @@
                         </div>
                     </div>
                     <hr>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class=" text-center">
-                                <a href="{{route('deposit.cancel',['id'=>$deposit->id])}}" class="btn btn-danger">Cancel</a>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="row">--}}
+{{--                        <div class="col-md-12">--}}
+{{--                            <div class=" text-center">--}}
+{{--                                <a href="{{route('deposit.cancel',['id'=>$deposit->id])}}" class="btn btn-danger">Cancel</a>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

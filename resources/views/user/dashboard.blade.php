@@ -37,11 +37,37 @@
                     <div class="single-today-card d-flex align-items-center">
                         <div class="flex-grow-1">
                             <span class="today">Account Balance</span>
+                            <h6>${{number_format($user->balance,2)}}</h6>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <img src="{{asset('dashboard/user/images/icon/user.png')}}" alt="Images">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-today-card d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <span class="today">Total profit</span>
                             <h6>${{number_format($user->profit,2)}}</h6>
                         </div>
 
                         <div class="flex-shrink-0 align-self-center">
                             <img src="{{asset('dashboard/user/images/icon/user.png')}}" alt="Images">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-today-card d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <span class="today">Bonus</span>
+                            <h6>${{number_format($user->bonus,2)}}</h6>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <img src="{{asset('dashboard/user/images/icon/groop.png')}}" alt="Images">
                         </div>
                     </div>
                 </div>
@@ -62,7 +88,20 @@
                 <div class="col-lg-3 col-sm-6">
                     <div class="single-today-card d-flex align-items-center">
                         <div class="flex-grow-1">
-                            <span class="today">Withdrawals</span>
+                            <span class="today">Total Deposit</span>
+                            <h6>${{number_format($totalDeposits,2)}}</h6>
+                        </div>
+
+                        <div class="flex-shrink-0 align-self-center">
+                            <img src="{{asset('dashboard/user/images/icon/discount.png')}}" alt="Images">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-sm-6">
+                    <div class="single-today-card d-flex align-items-center">
+                        <div class="flex-grow-1">
+                            <span class="today">Total Withdrawal</span>
                             <h6>${{number_format($user->withdrawals,2)}}</h6>
                         </div>
 
@@ -71,6 +110,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

@@ -76,16 +76,30 @@
             </li>
 
             <li>
-                <a href="{{url('account/new_investment')}}" class="box-style">
+                <a href="{{url('account/new_deposit')}}" class="box-style">
                     <i class="bx bx-chart"></i>
                     <span class="menu-title">New Deposit</span>
                 </a>
             </li>
 
             <li>
+                <a href="{{url('account/deposits')}}" class="box-style">
+                    <i class="bx bx-file-blank"></i>
+                    <span class="menu-title">Deposit List</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{url('account/new_investment')}}" class="box-style">
+                    <i class="bx bx-chart"></i>
+                    <span class="menu-title">Buy Package</span>
+                </a>
+            </li>
+
+            <li>
                 <a href="{{url('account/investments')}}" class="box-style">
                     <i class="bx bx-file-blank"></i>
-                    <span class="menu-title">Deposits</span>
+                    <span class="menu-title">Investment History</span>
                 </a>
             </li>
 
@@ -123,6 +137,12 @@
                     <span class="menu-title">Settings </span>
                 </a>
             </li>
+            <li>
+                <a href="{{route('setting.kyc')}}" class="box-style">
+                    <i class="bx bx-check-circle"></i>
+                    <span class="menu-title">KYC </span>
+                </a>
+            </li>
 
             <li>
                 <a href="{{url('account/logout')}}" class="box-style">
@@ -135,15 +155,15 @@
         </ul>
 
 
-{{--        <div class="dark-bar">--}}
-{{--            <a href="#" class="d-flex align-items-center">--}}
-{{--                <span class="dark-title">Enable Dark Theme</span>--}}
-{{--            </a>--}}
+        <div class="dark-bar">
+            <a href="#" class="d-flex align-items-center">
+                <span class="dark-title">Enable Dark Theme</span>
+            </a>
 
-{{--            <div class="form-check form-switch">--}}
-{{--                <input type="checkbox" class="checkbox" id="darkSwitch">--}}
-{{--            </div>--}}
-{{--        </div>--}}
+            <div class="form-check form-switch">
+                <input type="checkbox" class="checkbox" id="darkSwitch">
+            </div>
+        </div>
     </nav>
 </div>
 <!-- End Sidebar Area -->

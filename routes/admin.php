@@ -5,9 +5,12 @@ use App\Http\Controllers\Admin\Dashboard;
 use App\Http\Controllers\Admin\Deposits;
 use App\Http\Controllers\Admin\Investments;
 use App\Http\Controllers\Admin\Investors;
+use App\Http\Controllers\Admin\ManagedAccountDurations;
+use App\Http\Controllers\Admin\ManagedAccounts;
 use App\Http\Controllers\Admin\Packages;
 use App\Http\Controllers\Admin\PromoController;
 use App\Http\Controllers\Admin\Settings;
+use App\Http\Controllers\Admin\Transfers;
 use App\Http\Controllers\Admin\WebSettings;
 use App\Http\Controllers\Admin\Withdrawals;
 use App\Http\Controllers\Auth\Login;
@@ -29,6 +32,17 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('dashboard',[Dashboard::class,'landingPage'])->name('admin.dashboard');
+
+/*================ TRANSFER ROUTE ====================*/
+Route::get('transfers',[Transfers::class,'landingPage'])->name('transfers.index');
+/*================ MANAGED ACCOUNTS ROUTE ====================*/
+Route::get('accounts',[ManagedAccounts::class,'landingPage'])->name('accounts.index');
+Route::get('accounts/{id}/complete',[ManagedAccounts::class,'markCompleted'])->name('accounts.complete');
+Route::get('accounts/{id}/activate',[ManagedAccounts::class,'markOngoing'])->name('accounts.activate');
+/*================ MANAGED ACCOUNTS DURATION ROUTE ====================*/
+Route::get('accounts/duration',[ManagedAccountDurations::class,'landingPage'])->name('accounts.duration.index');
+Route::get('accounts/duration/{id}/delete',[ManagedAccountDurations::class,'delete'])->name('accounts.duration.delete');
+Route::post('accounts/duration/new',[ManagedAccountDurations::class,'addNew'])->name('accounts.duration.new');
 
 /*================ DEPOSIT ROUTE ====================*/
 Route::get('deposits',[Deposits::class,'landingPage'])->name('deposit.index');

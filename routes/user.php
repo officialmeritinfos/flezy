@@ -7,6 +7,7 @@ use App\Http\Controllers\User\Investments;
 use App\Http\Controllers\User\ManagedAccounts;
 use App\Http\Controllers\User\Referrals;
 use App\Http\Controllers\User\Settings;
+use App\Http\Controllers\User\Transfers;
 use App\Http\Controllers\User\Withdrawals;
 use App\Models\Withdrawal;
 use Illuminate\Support\Facades\Route;
@@ -102,5 +103,8 @@ Route::get('/investments/chart/{userId}', function ($userId) {
 Route::get('subtrade',[ManagedAccounts::class,'landingPage'])->name('subtrade.index');
 Route::post('subtrade/new',[ManagedAccounts::class,'subscribeNew'])->name('subtrade.new');
 Route::get('subtrade/{id}/delete',[ManagedAccounts::class,'delete'])->name('subtrade.delete');
+/*================ TRANSFERS ROUTE ====================*/
+Route::get('transfer',[Transfers::class,'landingPage'])->name('transfer.index');
+Route::post('transfer/new',[Transfers::class,'newTransfer'])->name('transfer.new');
 
 Route::get('logout',[Login::class,'logout']);

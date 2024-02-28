@@ -72,6 +72,7 @@ class ManagedAccounts extends Controller
             'expires_at'=>strtotime($duration->duration,time())
         ]);
         if(!empty($account)){
+            $user->save();
             $admin = User::where('is_admin',1)->first();
             $adminMessage = "
                     A new managed account submission
@@ -79,7 +80,7 @@ class ManagedAccounts extends Controller
                 ";
             //SendInvestmentNotification::dispatch($admin,$adminMessage,'New Investment Initiation');
             $admin->notify(new InvestmentMail($admin,$adminMessage,'New Managed Account Submission'));
-            return back()->with('success','Account Added');
+            return back()->with('success','Subscription successful');
         }
 
         return back()->with('error','Something went wrong');

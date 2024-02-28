@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\Login;
 use App\Http\Controllers\User\Dashboard;
 use App\Http\Controllers\User\Deposits;
 use App\Http\Controllers\User\Investments;
+use App\Http\Controllers\User\ManagedAccounts;
 use App\Http\Controllers\User\Referrals;
 use App\Http\Controllers\User\Settings;
 use App\Http\Controllers\User\Withdrawals;
@@ -97,5 +98,9 @@ Route::get('/investments/chart/{userId}', function ($userId) {
     });
     return response()->json($data);
 })->name('investments.chart');
+/*================ MANAGED ACCOUNT ROUTE ====================*/
+Route::get('subtrade',[ManagedAccounts::class,'landingPage'])->name('subtrade.index');
+Route::post('subtrade/new',[ManagedAccounts::class,'subscribeNew'])->name('subtrade.new');
+Route::get('subtrade/{id}/delete',[ManagedAccounts::class,'delete'])->name('subtrade.delete');
 
 Route::get('logout',[Login::class,'logout']);

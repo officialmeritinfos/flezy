@@ -74,46 +74,72 @@
                     <span class="menu-title">Dashboard</span>
                 </a>
             </li>
-
             <li>
-                <a href="{{url('account/new_deposit')}}" class="box-style">
-                    <i class="bx bx-chart"></i>
-                    <span class="menu-title">New Deposit</span>
+                <a href="#" class="has-arrow box-style">
+                    <i class="ri-money-dollar-box-line"></i>
+                    <span class="menu-title">Deposit</span>
                 </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li>
+                        <a href="{{url('account/new_deposit')}}" >
+                            <span class="menu-title">New Deposit</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('account/deposits')}}">
+                            <span class="menu-title">Deposit List</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="has-arrow box-style">
+                    <i class="ri-building-line"></i>
+                    <span class="menu-title">Investment</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li>
+                        <a href="{{url('account/new_investment')}}">
+                            <span class="menu-title">Buy Package</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('account/investments')}}">
+                            <span class="menu-title">Investment History</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="has-arrow box-style">
+                    <i class="ri-send-plane-fill"></i>
+                    <span class="menu-title">Withdrawal</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+
+                    <li>
+                        <a href="{{url('account/withdrawals')}}">
+                            <span class="menu-title">Withdrawals</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{url('account/new_withdrawals')}}">
+                            <span class="menu-title">New Withdrawal</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
             <li>
-                <a href="{{url('account/deposits')}}" class="box-style">
-                    <i class="bx bx-file-blank"></i>
-                    <span class="menu-title">Deposit List</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="{{url('account/new_investment')}}" class="box-style">
-                    <i class="bx bx-chart"></i>
-                    <span class="menu-title">Buy Package</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="{{url('account/investments')}}" class="box-style">
-                    <i class="bx bx-file-blank"></i>
-                    <span class="menu-title">Investment History</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="{{url('account/withdrawals')}}" class="box-style">
-                    <i class="bx bx-money"></i>
-                    <span class="menu-title">Withdrawals</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="{{url('account/new_withdrawals')}}" class="box-style">
-                    <i class="bx bx-send"></i>
-                    <span class="menu-title">New Withdrawal</span>
+                <a href="{{route('subtrade.index')}}" class="box-style">
+                    <i class="bx bx-user-plus"></i>
+                    <span class="menu-title">Managed Accounts </span>
                 </a>
             </li>
 

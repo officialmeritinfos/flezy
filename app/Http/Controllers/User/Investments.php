@@ -61,7 +61,7 @@ class Investments extends Controller
             'amount'=>['required','numeric'],
             'account'=>['required','numeric'],
             'package'=>['required','numeric'],
-            'asset'=>['required','alpha_dash']
+            'asset'=>['required','string']
         ]);
 
         if ($validator->fails()){

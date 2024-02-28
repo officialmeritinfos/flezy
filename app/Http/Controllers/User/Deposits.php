@@ -57,7 +57,7 @@ class Deposits extends Controller
         $user = Auth::user();
         $validator = Validator::make($request->input(),[
             'amount'=>['required','numeric'],
-            'asset'=>['required','alpha_dash']
+            'asset'=>['required','string']
         ]);
 
         if ($validator->fails()){

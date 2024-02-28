@@ -137,15 +137,19 @@
                             <div class="deal-bottom">
                                 <ul class="deal-item">
                                     <li>
-                                        Price: ${{number_format($package->minAmount,2)}} - @if($package->isUnlimited !=1)
+                                        Min. Deposit: ${{number_format($package->minAmount,2)}}
+                                    </li>
+                                    <li>
+                                        Max. Deposit: @if($package->isUnlimited !=1)
                                             ${{number_format($package->maxAmount,2)}}
                                         @else
                                             Unlimited
                                         @endif
                                     </li>
-                                    <li>Profit return: {{$package->roi}}% {{$option->getReturnType($package->returnType)}}</li>
-                                    <li>Contract Duration: {{$package->Duration}}</li>
+                                    <li>{{$option->getReturnType($package->returnType)}} Profit: {{$package->roi}}% </li>
+                                    <li> Duration: {{$package->Duration}}</li>
                                     <li>Referral Bonus: {{$package->referral}}% </li>
+                                    <li>Total Profit: {{$package->roi*$package->numberOfReturns}}% </li>
                                 </ul>
                                 <div class="btn-area">
                                     <a href="{{route('register')}}">Get Started</a>

@@ -22,14 +22,14 @@ class Dashboard extends Controller
             'siteName' => $web->name,
             'pageName' => 'Admin Dashboard',
             'user'     =>  $user,
-            'deposits'  => Deposit::where('status',1)->get(),
-            'pendingDeposit'=>Deposit::where('status','!=',1)->get(),
-            'withdrawals'=>Withdrawal::where('status',1)->get(),
-            'pendingWithdrawal'=>Withdrawal::where('status','!=',1)->get(),
-            'investments' => Investment::get(),
-            'ongoingInvestments'=>Investment::where('status',2)->get(),
-            'completedInvestments'=>Investment::where('status',1)->get(),
-            'cancelledInvestments'=>Investment::where('status',3)->get(),
+            'deposits'  => Deposit::where('status',1)->sum('amount'),
+            'pendingDeposit'=>Deposit::where('status','!=',1)->sum('amount'),
+            'withdrawals'=>Withdrawal::where('status',1)->sum('amount'),
+            'pendingWithdrawal'=>Withdrawal::where('status','!=',1)->sum('amount'),
+            'investments' => Investment::sum('amount'),
+            'ongoingInvestments'=>Investment::where('status',4)->sum('amount'),
+            'completedInvestments'=>Investment::where('status',1)->sum('amount'),
+            'cancelledInvestments'=>Investment::where('status',3)->sum('amount'),
             'investors'=>User::where('id','!=', $user->id)->get()
         ];
 

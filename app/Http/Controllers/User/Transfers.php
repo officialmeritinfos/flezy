@@ -68,7 +68,7 @@ class Transfers extends Controller
             'recipient'=>$receiver->id,
             'recipientHolder'=>$input['username'],
             'reference'=>$this->generateId('transfers','reference',15),
-            'status'=>1
+            'status'=>1,'amount'=>$input['amount']
         ]);
         if (!empty($transfer)){
             $user->save();

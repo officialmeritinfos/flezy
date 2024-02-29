@@ -1,34 +1,41 @@
 @extends('home.base')
 @section('content')
-    <!-- Start Page-title Area -->
-    <div class="page-title-area bg-black">
+    <!-- Page Banner Area Start -->
+    <div class="page__banner" data-background="{{asset('home/img/pages/page-banner.jpg')}}">
         <div class="container">
-            <div class="page-title-content">
-                <h2>{{$pageName}}</h2>
-                <ul>
-                    <li><a href="{{url('/')}}">Home</a></li>
-                    <li>{{$pageName}}</li>
-                </ul>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="page__banner-content">
+                        <span>{{$pageName}}</span>
+                        <ul>
+                            <li><a href="{{url('/')}}">Home</a><span>|</span></li>
+                            <li>{{$pageName}}</li>
+                        </ul>
+                        <h1>{{$pageName}}</h1>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End Page-title Area -->
+    <!-- Page Banner Area End -->
 
-    <!-- Start Services Details Area -->
-    <div class="services-details-area ptb-100">
+    <!-- Services Details Start -->
+    <div class="services__details section-padding">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="services-details-desc">
-                        <h3>{{$service->title}}</h3>
-                        <p>{{$service->short}}</p>
-                        <img src="{{asset('home/serv/'.$service->photo)}}" alt="image">
-                        <p>
-                            {!! str_replace('MYSITE',$siteName,$service->content) !!}
-                        </p>
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-8 lg-mb-60">
+                    <div class="services__details-left">
+                        <div class="services__details-left-image dark__image">
+                            <img src="{{asset('home/serv/'.$service->photo)}}" alt="">
+                        </div>
+                        <div class="services__details-left-content">
+                            <h2>{{$service->title}}</h2>
+                            <div>
+                                {!! str_replace('MYSITE',$siteName,$service->content) !!}
+                            </div>
+                        </div>
                     </div>
                 </div>
-
 
             </div>
         </div>

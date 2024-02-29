@@ -61,6 +61,11 @@ class Custom{
     //services
     public function getServices()
     {
-        return Service::where('status',1)->get();
+        return Service::where('status',1)->where('isService',1)->get();
+    }
+    //sectors
+    public function getSectors()
+    {
+        return Service::where('status',1)->where('isSector',1)->get();
     }
 }

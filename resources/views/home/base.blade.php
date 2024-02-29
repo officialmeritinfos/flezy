@@ -1,23 +1,9 @@
-<!doctype html>
-<html lang="zxx">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Links of CSS files -->
-    <link rel="stylesheet" href="{{asset('home/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/animate.min.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/meanmenu.min.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/magnific-popup.min.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/odometer.min.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/showMoreItems-theme.min.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/owl.carousel.min.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/owl.theme.default.min.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/remixicon.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('home/css/responsive.css')}}">
-
+    <!-- Start Meta -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="og:title" content="{{$siteName}}"/>
     <meta name="og:type" content="company"/>
     <meta name="og:url" content="/"/>
@@ -30,219 +16,269 @@
     <!-- favicons Icons -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('home/images/'.$web->logo)}}" />
     @stack('css')
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{asset('home/css/bootstrap.min.css')}}">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="{{asset('home/css/all.css')}}">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="{{asset('home/css/animate.css')}}">
+    <!-- Swiper Bundle CSS -->
+    <link rel="stylesheet" href="{{asset('home/css/swiper-bundle.min.css')}}">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="{{asset('home/css/magnific-popup.css')}}">
+    <!-- Mean Menu CSS -->
+    <link rel="stylesheet" href="{{asset('home/css/meanmenu.min.css')}}">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{asset('home/sass/style.css')}}">
 </head>
+
 <body>
 @inject('injected','App\Defaults\Custom')
-<!-- Start Header Area -->
-<div class="header-area">
-
-    <!-- Start Top Header Area -->
-    <div class="top-header-area">
-        <div class="container-fluid">
-            <div class="top-header-inner">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 col-md-12">
-                        <div class="top-header-left-side">
-                            <div class="d-flex align-items-center">
-                                <ul class="top-header-social-links d-flex align-items-center">
-                                    <li>Follow us:</li>
-                                    <li><a href="#" target="_blank"><i class="ri-facebook-fill"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="ri-twitter-fill"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="ri-linkedin-fill"></i></a></li>
-                                    <li><a href="#" target="_blank"><i class="ri-instagram-line"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
+<!-- Preloader Start -->
+<div class="theme-loader">
+    <div class="spinner">
+        <div class="spinner-bounce one"></div>
+        <div class="spinner-bounce two"></div>
+        <div class="spinner-bounce three"></div>
+    </div>
+</div>
+<!-- Preloader End -->
+<!-- Dark Light Start -->
+<div class="switch__tab">
+    <span class="switch__tab-btn active light-mode-title">Light</span>
+    <span class="mode__switch three" onclick="darkLight()"><span></span></span>
+    <span class="switch__tab-btn dark-mode-title">Dark</span>
+</div>
+<!-- Dark Light End -->
+<!-- Header Area Start -->
+<div class="header__three">
+    <!-- Top Bar Start -->
+    <div class="topbar__three">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-6">
+                    <div class="topbar__three-left lg-t-center">
+                        <a href="#"><i class="fas fa-map icon-animation"></i>{!! $web->address !!}</a>
                     </div>
-
-                    <div class="col-lg-8 col-md-12">
-                        <ul class="top-header-contact-info">
-                            <li><i class="ri-time-line"></i><span>SUN - THU:</span> 8:00 AM - 9:00 PM</li>
-                            <li><i class="ri-map-pin-2-line"></i><span>OFFICE:</span> {!! $web->address !!}</li>
+                </div>
+                <div class="col-xl-7 col-lg-6">
+                    <div class="topbar__three-right t-right lg-t-center">
+                        <ul>
+                            @if(!empty($web->phone))
+                                <li><a href="tel:{{$web->phone}}"><i class="fas fa-phone-alt"></i>{{$web->phone}}</a></li>
+                            @endif
+                            <li><a href="mailto:{{$web->email}}"><i class="fas fa-envelope"></i>{{$web->email}}</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- End Top Header Area -->
-
-    <!-- Start Navbar Area -->
-    <div class="navbar-area navbar-style-two">
-        <div class="enry-responsive-nav">
-            <div class="container">
-                <div class="enry-responsive-menu">
-                    <div class="logo">
-                        <a href="{{url('/')}}">
-                            <img src="{{asset('home/images/'.$web->logo)}}" alt="logo" style="width: 100px;"/>
-                        </a>
+    <!-- Top Bar End -->
+    <!-- Menu Bar Area Start -->
+    <div class="header__area header__sticky">
+        <div class="container">
+            <div class="header__area-menubar three">
+                <div class="header__area-menubar-left">
+                    <div class="header__area-menubar-left-logo">
+                        <a href="{{url('/')}}"><img class="dark-n" src="{{asset('home/images/'.$web->logo)}}" alt="">
+                            <img class="light-n" src="{{asset('home/images/'.$web->logo)}}" alt=""></a>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div class="enry-nav">
-            <div class="container-fluid">
-                <nav class="navbar navbar-expand-md navbar-light">
-                    <a class="navbar-brand" href="{{url('/')}}">
-                        <img src="{{asset('home/images/'.$web->logo)}}" alt="logo" style="width: 120px;"/>
-                    </a>
-
-                    <div class="collapse navbar-collapse mean-menu">
-                        <ul class="navbar-nav">
-
-                            <li class="nav-item">
-                                <a href="{{url('/')}}" class="nav-link">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{url('about')}}" class="nav-link">About</a>
-                            </li>
-
-                            <li class="nav-item"><a href="#" class="dropdown-toggle nav-link">Pages</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a href="{{url('plans')}}" class="nav-link">Plans</a></li>
-                                    <li class="nav-item"><a href="{{url('faqs')}}" class="nav-link">Frequently Asked Questions</a></li>
-                                    <li class="nav-item"><a href="{{url('terms')}}" class="nav-link">Terms & Conditions</a></li>
-                                    <li class="nav-item"><a href="{{url('privacy')}}" class="nav-link">Privacy policy</a></li>
+                <div class="header__area-menubar-center">
+                    <div class="header__area-menubar-center-menu three menu-responsive">
+                        <ul id="mobilemenu">
+                            <li><a href="{{url('/')}}">Home</a></li>
+                            <li class="menu-item-has-children"><a href="#">Company</a>
+                                <ul class="sub-menu">
+                                    <li><a href="{{url('about')}}">About Us</a></li>
+                                    <li><a href="{{url('plans')}}">Investment Plans</a></li>
+                                    <li><a href="{{url('contact')}}">Contact</a></li>
                                 </ul>
                             </li>
-
-                            <li class="nav-item"><a href="#" class="dropdown-toggle nav-link">Services</a>
-                                <ul class="dropdown-menu">
-                                    @foreach($injected->getServices() as $service)
-                                        <li class="nav-item"><a href="{{route('service.details',['id'=>$service->id])}}" class="nav-link">{{$service->title}}</a></li>
+                            <li class="menu-item-has-children"><a href="#">Services</a>
+                                <ul class="sub-menu">
+                                    @foreach($injected->getSectors() as $sector)
+                                        <li><a href="{{route('service.details',['id'=>$sector->id])}}" >{{$sector->title}}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
-
-                            <li class="nav-item"><a href="#" class="dropdown-toggle nav-link">Account</a>
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item"><a href="{{route('login')}}" class="nav-link">Login</a></li>
-
-                                    <li class="nav-item"><a href="{{route('register')}}" class="nav-link">Register</a></li>
+                            <li class="menu-item-has-children"><a href="#">Sectors</a>
+                                <ul class="sub-menu">
+                                    @foreach($injected->getServices() as $service)
+                                        <li><a href="{{route('service.details',['id'=>$service->id])}}" >{{$service->title}}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
+                            <li class="menu-item-has-children"><a href="#">Help</a>
+                                <ul class="sub-menu">
+                                    <li ><a href="{{url('faqs')}}" >Frequently Asked Questions</a></li>
+                                    <li ><a href="{{url('terms')}}" >Terms & Conditions</a></li>
+                                    <li ><a href="{{url('privacy')}}" >Privacy policy</a></li>
+                                </ul>
+                            </li>
+                            <li class="menu-item-has-children"><a href="#">Investor Space</a>
+                                <ul class="sub-menu">
+                                    <li><a href="{{route('login')}}" >Login</a></li>
 
-                            <li class="nav-item"><a href="{{url('contact')}}" class="nav-link">Contact</a></li>
+                                    <li><a href="{{route('register')}}" >Register</a></li>
+                                </ul>
+                            </li>
                         </ul>
-
-                        <div class="others-option">
-                            <div class="cart-btn">
-                                <a href="{{route('login')}}"><i class="ri-login-box-fill"></i><span>Login</span></a>
-                            </div>
+                    </div>
+                </div>
+                <div class="header__area-menubar-right">
+                    <div class="header__area-menubar-right-box">
+                        <div class="header__area-menubar-right-box-btn">
+                            <a class="btn-seven" href="{{route('register')}}">Get Started<i class="far fa-chevron-double-right"></i></a>
                         </div>
                     </div>
-                </nav>
+                    <div class="responsive-menu"></div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End Navbar Area -->
-
+    <!-- Menu Bar Area End -->
 </div>
-<!-- End Header Area -->
-
+<!-- Header Area End -->
 @yield('content')
-
-
-<!-- Start Footer Area -->
-<footer class="footer-area">
+<!-- Subscribe Area Start -->
+<div class="subscribe">
     <div class="container">
-        <div class="row  justify-content-center">
-            <div class="col-lg-3 col-sm-6 col-md-6">
-                <div class="single-footer-widget">
-                    <a href="{{url('/')}}" class="logo">
-                        <img src="{{asset('home/images/'.$web->logo)}}" alt="image">
-                    </a>
-                    <p></p>
-                    <div class="footer-contact-info">
-                        <h5>Contact:</h5>
+        <div class="row align-items-center">
+            <div class="col-xl-6 col-lg-6">
+                <div class="subscribe-title">
+                    <h2>Join over 14k+ People investing with us</h2>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="subscribe-form">
+                    <form action="#">
+                        <a class="btn-seven" href="{{route('register')}}">Get Started</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Subscribe Area End -->
+<!-- Footer One Area Start -->
+<div class="footer__three">
+    <img class="footer__three-shape" src="{{asset('home/img/shape/footer-bg-2.png')}}" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-5 col-md-7 md-mb-30 col-12">
+                <div class="footer__three-widget">
+                    <div class="footer__three-widget-about">
+                        <a href="{{url('/')}}"><img class="dark-n" src="{{asset('home/images/'.$web->logo)}}" alt="">
+                            <img class="light-n" src="{{asset('home/images/'.$web->logo)}}" alt=""></a>
+                        <p>
+                            {{$siteName}} is a leading investment management organization that is dedicated to meeting
+                            each client’s unique needs through a wide range of investment strategies. Our team of investment
+                            experts is committed to increasing our clients’ returns on investment and fostering long-lasting
+                            partnerships based on trust and open communication.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-4 col-md-5 col-sm-7 xl-mb-30 col-6">
+                <div class="footer__three-widget">
+                    <h4>Head Office</h4>
+                    <div class="footer__three-widget-location">
+                        <div class="footer__three-widget-location-item">
+                            <div class="footer__three-widget-location-item-icon">
+                                <i class="far fa-map-marker-alt"></i>
+                            </div>
+                            <div class="footer__three-widget-location-item-info">
+                                <a href="#">
+                                    {!! $web->address !!}
+                                </a>
+                            </div>
+                        </div>
+                        @if(!empty($web->address2))
+                            <h6>Branch Office</h6>
+                            <div class="footer__three-widget-location-item">
+                                <div class="footer__three-widget-location-item-icon">
+                                    <i class="far fa-map-marker-alt"></i>
+                                </div>
+                                <div class="footer__three-widget-location-item-info">
+                                    <a href="#">
+                                        {!! $web->address2 !!}
+                                    </a>
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5 sm-mb-30 col-6">
+                <div class="footer__three-widget">
+                    <h4>Company</h4>
+                    <div class="footer__three-widget-solution">
                         <ul>
-                            @if(!empty($web->phone))
-                                <li><span>Call:</span> <a href="tel:{{$web->phone}}">{{$web->phone}}</a></li>
-                            @endif
-                            <li><span>Email:</span> <a href="mailto:{{$web->email}}">{{$web->email}}</a></li>
+                            <li><a href="{{url('faqs')}}"><i class="far fa-chevron-double-right"></i>Help Center</a></li>
+                            <li><a href="{{url('terms')}}"><i class="far fa-chevron-double-right"></i>terms & conditions</a></li>
+                            <li><a href="{{url('privacy')}}"><i class="far fa-chevron-double-right"></i>privacy policy</a></li>
+                            <li><a href="{{route('register')}}"><i class="far fa-chevron-double-right"></i>Create Account</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-3 col-sm-6 col-md-6">
-                <div class="single-footer-widget pl-4">
-                    <h3>Quick Links</h3>
-                    <ul class="links-list">
-                        <li><a href="{{url('about')}}">About us</a></li>
-                        <li><a href="{{url('contact')}}">Contact Us</a></li>
-                        <li><a href="{{url('plans')}}">Plans</a></li>
-                        <li><a href="{{url('faqs')}}">FAQs</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 col-md-6">
-                <div class="single-footer-widget pl-2">
-                    <h3>Services</h3>
-                    <ul class="links-list">
-                        @foreach($injected->getServices() as $service)
-                            <li><a href="{{route('service.details',['id'=>$service->id])}}">{{$service->title}}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-sm-6 col-md-6">
-                <div class="single-footer-widget">
-                    <h3>Opening Hours</h3>
-                    <ul class="opening-hours">
-                        <li>SUN - MON: <span>8:00 AM - 9:00 PM</span></li>
-                        <li>TUE: <span>8:00 AM - 9:00 PM</span></li>
-                        <li>WED: <span>8:00 AM - 9:00 PM</span></li>
-                        <li>THU: <span>8:00 AM - 9:00 PM</span></li>
-                        <li>FRI: <span>8:00 AM - 9:00 PM</span></li>
-                        <li>SAT: <span>8:00 AM - 9:00 PM</span></li>
-                    </ul>
+            <div class="col-xl-3 col-lg-4 col-md-5 col-6">
+                <div class="footer__three-widget border-one tow">
+                    <h4>Working Time</h4>
+                    <div class="footer__three-widget-hour">
+                        <p>Mon - fri : 24/7</p>
+                        <p>sat : 24/7</p>
+                        <p>Sunday: 24/7</p>
+                        <div class="footer__three-widget-hour-social">
+                            <ul>
+                                <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="copyright-area">
+    <div class="copyright__three">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 col-md-7 col-sm-6">
-                    <p>Copyright @{{date('Y')}} {{$siteName}}</p>
-                </div>
-
-                <div class="col-lg-6 col-md-5 col-sm-6">
-                    <ul class="social-links">
-                        <li><a href="#" target="_blank"><i class="ri-facebook-fill"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="ri-twitter-fill"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="ri-linkedin-fill"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="ri-instagram-line"></i></a></li>
-                    </ul>
+            <div class="row">
+                <div class="col-xl-12">
+                    <p>Copyright {{date('Y')}}  <a href="{{url('/')}}">{{$siteName}}</a> - All Rights Reserved.</p>
                 </div>
             </div>
         </div>
     </div>
-</footer>
-<!-- End Footer Area -->
-
-<div class="go-top"><i class="ri-arrow-up-s-line"></i></div>
-
-<!-- Links of JS files -->
-<script src="{{asset('home/js/jquery.min.js')}}"></script>
-<script src="{{asset('home/js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{asset('home/js/owl.carousel.min.js')}}"></script>
-<script src="{{asset('home/js/appear.min.js')}}"></script>
-<script src="{{asset('home/js/odometer.min.js')}}"></script>
-<script src="{{asset('home/js/magnific-popup.min.js')}}"></script>
-<script src="{{asset('home/js/mixitup.min.js')}}"></script>
-<script src="{{asset('home/js/meanmenu.min.js')}}"></script>
-<script src="{{asset('home/js/showMoreItems.min.js')}}"></script>
-<script src="{{asset('home/js/wow.min.js')}}"></script>
-<script src="{{asset('home/js/form-validator.min.js')}}"></script>
-<script src="{{asset('home/js/contact-form-script.js')}}"></script>
-<script src="{{asset('home/js/ajaxchimp.min.js')}}"></script>
-<script src="{{asset('home/js/main.js')}}"></script>
+</div>
+<!-- Footer One Area End -->
+<!-- Scroll Btn Start -->
+<div class="scroll-up scroll-three">
+    <svg class="scroll-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102"><path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" /> </svg>
+</div>
+<!-- Scroll Btn End -->
+<!-- Main JS -->
+<script src="{{asset('home/js/jquery-3.6.0.min.js')}}"></script>
+<!-- Bootstrap JS -->
+<script src="{{asset('home/js/bootstrap.min.js')}}"></script>
+<!-- Counter Up JS -->
+<script src="{{asset('home/js/jquery.counterup.min.js')}}"></script>
+<!-- Popper JS -->
+<script src="{{asset('home/js/popper.min.js')}}"></script>
+<!-- Progressbar JS -->
+<script src="{{asset('home/js/progressbar.min.js')}}"></script>
+<!-- Magnific Popup JS -->
+<script src="{{asset('home/js/jquery.magnific-popup.min.js')}}"></script>
+<!-- Swiper Bundle JS -->
+<script src="{{asset('home/js/swiper-bundle.min.js')}}"></script>
+<!-- Isotope JS -->
+<script src="{{asset('home/js/isotope.pkgd.min.js')}}"></script>
+<!-- Waypoints JS -->
+<script src="{{asset('home/js/jquery.waypoints.min.js')}}"></script>
+<!-- Mean Menu JS -->
+<script src="{{asset('home/js/jquery.meanmenu.min.js')}}"></script>
+<!-- Custom JS -->
+<script src="{{asset('home/js/custom.js')}}"></script>
 <!-- Google language start -->
 <style>
 

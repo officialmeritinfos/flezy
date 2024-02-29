@@ -1,44 +1,70 @@
 @extends('home.base')
 @section('content')
-    <!-- Start Page-title Area -->
-    <div class="page-title-area bg-black">
+    <!-- Page Banner Area Start -->
+    <div class="page__banner" data-background="{{asset('home/img/pages/page-banner.jpg')}}">
         <div class="container">
-            <div class="page-title-content">
-                <h2>{{$pageName}}</h2>
-                <ul>
-                    <li><a href="{{url('/')}}">Home</a></li>
-                    <li>{{$pageName}}</li>
-                </ul>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="page__banner-content">
+                        <span>{{$pageName}}</span>
+                        <ul>
+                            <li><a href="{{url('/')}}">Home</a><span>|</span></li>
+                            <li>{{$pageName}}</li>
+                        </ul>
+                        <h1>{{$pageName}}</h1>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End Page-title Area -->
+    <!-- Page Banner Area End -->
 
     <!-- Business One -->
-    <section class="business-one style-five" style="background-image:url(home/images/background/pattern-39.png)">
-        <div class="auto-container">
-            <!-- Business One Lower Section -->
-            <div class="business-one_lower-section text-center" style="margin-top: 10rem;">
-                <h6>Main Details:</h6>
-                <div class="row clearfix">
-                    <!-- Branch Column -->
-                    <div class="branch-column col-lg-4 col-md-6 col-sm-12 mx-auto">
-                        <div class="branch-column_inner">
-                            <div class="branch-name"> (Head Office)</div>
-                            <ul class="branch-info_list">
-                                <li>{!! $web->address !!}
-                                </li>
-                                <li><a href="tel:"></a> </li>
-                                <li><a href="mailto:{{$web->email}}">{{$web->email}}</a></li>
-                            </ul>
+    <div class="contact__three pb-0 section-padding">
+        <div class="container">
+            <div class="row justify-content-center">
+
+
+
+                @if(!empty($web->phone))
+                    <div class="col-xl-4 col-md-6 lg-mb-30">
+                        <div class="contact__three-info">
+                            <div class="contact__three-info-icon">
+                                <img src="{{asset('home//img/icon/call.png')}}" alt="">
+                            </div>
+                            <div class="contact__three-info-content">
+                                <h4>Talk to US</h4>
+                                <p><a href="{{$web->phone}}">{{$web->phone}}</a></p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                <div class="col-xl-4 col-md-6 md-mb-30">
+                    <div class="contact__three-info">
+                        <div class="contact__three-info-icon">
+                            <img src="{{asset('home//img/icon/email.png')}}" alt="">
+                        </div>
+                        <div class="contact__three-info-content">
+                            <h4>Quick Email</h4>
+                            <p><a href="mailto:{{$web->email}}">{{$web->email}}</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6">
+                    <div class="contact__three-info">
+                        <div class="contact__three-info-icon">
+                            <img src="{{asset('home//img/icon/locations.png')}}" alt="">
+                        </div>
+                        <div class="contact__three-info-content">
+                            <h4>Office Location</h4>
+                            <p>{!! $web->address !!}</p>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
-    </section>
-    <!-- End Business One -->
+    </div>
+
 
     <!-- Map One -->
     <section class="map-one">

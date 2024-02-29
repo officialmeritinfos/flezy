@@ -1,18 +1,23 @@
 @extends('home.base')
 @section('content')
-    <!-- Start Page-title Area -->
-    <div class="page-title-area bg-black">
+    <!-- Page Banner Area Start -->
+    <div class="page__banner" data-background="{{asset('home/img/pages/page-banner.jpg')}}">
         <div class="container">
-            <div class="page-title-content">
-                <h2>{{$pageName}}</h2>
-                <ul>
-                    <li><a href="{{url('/')}}">Home</a></li>
-                    <li>{{$pageName}}</li>
-                </ul>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="page__banner-content">
+                        <span>{{$pageName}}</span>
+                        <ul>
+                            <li><a href="{{url('/')}}">Home</a><span>|</span></li>
+                            <li>{{$pageName}}</li>
+                        </ul>
+                        <h1>{{$pageName}}</h1>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- End Page-title Area -->
+    <!-- Page Banner Area End -->
 
 
     <!--About One Start-->

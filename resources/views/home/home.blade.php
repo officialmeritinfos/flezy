@@ -292,16 +292,16 @@
                 <div class="col-xl-7 col-lg-7 lg-mb-50">
                     <div class="getIn__touch-three-left">
                         <div class="getIn__touch-three-left-title">
-                            <span class="subtitle-three">Request a Quote</span>
-                            <h2>Experience the Evolution of your Business</h2>
-                            <p>he world is changing, and so is your business. To stay relevant and successful, you need to evolve. </p>
+                            <span class="subtitle-three">Join our Client list</span>
+                            <h2>Experience the Evolution of your finance</h2>
+                            <p>The world is changing, and so does your finances need to change too.</p>
                         </div>
                         <div class="getIn__touch-three-left-video">
                             <div class="getIn__touch-three-left-video-icon video video-pulse">
-                                <a class="video-popup" href="https://www.youtube.com/watch?v=0WC-tD-njcA"><i class="fal fa-play"></i></a>
+                                <a class="video-popup" href="https://www.youtube.com/watch?v=-_Amo6GYckU"><i class="fal fa-play"></i></a>
                             </div>
                             <div class="getIn__touch-three-left-video-text">
-                                <h4>Watch Consulting Video</h4>
+                                <h4>Watch Video</h4>
                             </div>
                             <div class="getIn__touch-three-left-video-shape">
                                 <img src="{{asset('home/img/icon/getInTouchThree.png')}}" alt="">

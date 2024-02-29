@@ -25,7 +25,7 @@
             <div class="row m-0">
                 <div class="col-lg-6 col-md-12 p-0">
                     <div class="about-img">
-                        <img src="{{asset('home/img/about/about2.jpg')}}" alt="image">
+                        <img src="{{asset('home/img/about/about-7.jpg')}}" alt="image">
                     </div>
                 </div>
 

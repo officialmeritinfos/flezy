@@ -82,8 +82,9 @@
             <div class="header__area-menubar three">
                 <div class="header__area-menubar-left">
                     <div class="header__area-menubar-left-logo">
-                        <a href="{{url('/')}}"><img class="dark-n" src="{{asset('home/images/'.$web->logo)}}" alt="">
-                            <img class="light-n" src="{{asset('home/images/'.$web->logo)}}" alt=""></a>
+                        <a href="{{url('/')}}"><img class="dark-n" src="{{asset('home/images/'.$web->logo)}}" alt=""
+                            style="width: 100px;">
+                            <img class="light-n" src="{{asset('home/images/'.$web->logo)}}" alt="" style="width: 100px;"></a>
                     </div>
                 </div>
                 <div class="header__area-menubar-center">

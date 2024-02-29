@@ -101,17 +101,17 @@
 
                         </table>
                     </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-xl-12 text-center text-info alert alert-primary">
-                            <p>
-                                You are to send <b>{{number_format($investment->amount,2)}} of {{$investment->asset}}</b>
-                                to the address <b style="font-size:20px;" id="address">{{$investment->wallet}}</b>.<br>
-                                After making payment, contact support for instant crediting.
-                            </p>
-                            <button class="btn btn-primary copy" data-clipboard-target="#address">Copy</button>
-                        </div>
-                    </div>
+{{--                    <hr>--}}
+{{--                    <div class="row">--}}
+{{--                        <div class="col-xl-12 text-center text-info alert alert-primary">--}}
+{{--                            <p>--}}
+{{--                                You are to send <b>{{number_format($investment->amount,2)}} of {{$investment->asset}}</b>--}}
+{{--                                to the address <b style="font-size:20px;" id="address">{{$investment->wallet}}</b>.<br>--}}
+{{--                                After making payment, contact support for instant crediting.--}}
+{{--                            </p>--}}
+{{--                            <button class="btn btn-primary copy" data-clipboard-target="#address">Copy</button>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                     <hr>
                     <div class="row">
                         <div class="col-md-12">

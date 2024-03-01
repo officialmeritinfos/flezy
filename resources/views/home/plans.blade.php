@@ -55,13 +55,13 @@
                                     <li><i class="fal fa-check"></i>
                                         {{$option->getReturnType($package->returnType)}} Profit: {{$package->roi}}%
                                     </li>
-                                    <li><i class="fal fa-times"></i>
+                                    <li><i class="fal fa-check"></i>
                                         Duration: {{$package->Duration}}
                                     </li>
-                                    <li><i class="fal fa-times"></i>
+                                    <li><i class="fal fa-check"></i>
                                         Referral Bonus: {{$package->referral}}%
                                     </li>
-                                    <li><i class="fal fa-times"></i>
+                                    <li><i class="fal fa-check"></i>
                                         Total Profit: {{$package->roi*$package->numberOfReturns}}%
                                     </li>
                                 </ul>
